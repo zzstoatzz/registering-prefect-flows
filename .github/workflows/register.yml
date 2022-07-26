@@ -23,7 +23,7 @@ jobs:
       run: poetry config virtualenvs.create false
 
     - name: Poetry Install
-      run: poetry install --no-interaction --no-ansi --no-dev
+      run: sudo poetry install --no-interaction --no-ansi --no-dev
 
     - name: Authenticate to Prefect dependencies
       run: prefect auth login -k $TOKEN
