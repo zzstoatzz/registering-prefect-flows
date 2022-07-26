@@ -4,7 +4,7 @@ from prefect.storage import Docker
 from custom_module import task_a, task_b
 
 storage = Docker(
-    registry_url='727888219528.dkr.ecr.us-east-2.amazonaws.com',
+    registry_url='330830921905.dkr.ecr.us-east-1.amazonaws.com',
     dockerfile='Dockerfile'
 )
 
