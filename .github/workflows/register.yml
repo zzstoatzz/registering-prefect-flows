@@ -19,11 +19,11 @@ jobs:
     - name: Pip update
       run: pip install -U wheel pip
 
-    - name: Poetry Settings
-      run: poetry config virtualenvs.create false
+    # - name: Poetry Settings
+    #   run: poetry config virtualenvs.create false
 
-    - name: Poetry Install
-      run: sudo poetry install --no-interaction --no-ansi --no-dev
+    # - name: Poetry Install
+    #   run: poetry install --no-interaction --no-ansi --no-dev
 
     - name: Authenticate to Prefect dependencies
       run: prefect auth login -k $TOKEN
