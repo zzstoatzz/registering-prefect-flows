@@ -8,6 +8,6 @@ storage = Docker(
     dockerfile='Dockerfile'
 )
 
-with Flow('Testing', storage=storage) as flow:
+with Flow('sandbox', storage=storage) as flow:
     result = task_a()
     task_b(upstream_tasks=[result])
