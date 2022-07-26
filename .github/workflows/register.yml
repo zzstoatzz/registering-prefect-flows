@@ -25,7 +25,7 @@ jobs:
     # - name: Poetry Install
     #   run: poetry install --no-interaction --no-ansi --no-dev
 
-    - name: Authenticate to Prefect dependencies
+    - name: Authenticate with Prefect Cloud
       run: prefect auth login -k $TOKEN
 
     - name: Configure AWS credentials
