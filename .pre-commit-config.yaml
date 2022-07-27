@@ -3,5 +3,5 @@ repos:
     hooks:
     - id: export-requirements
       name: export-requirements
-      entry: export-requirements.sh
+      entry: .git/hooks/export-requirements.sh
       language: script
