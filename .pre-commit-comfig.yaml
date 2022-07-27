@@ -1,0 +1,5 @@
+repos:
+- repo: https://github.com/zzstoatzz/registering-prefect-flows
+  rev: main
+  hooks:
+  - id: update-requirements-from-pyproject
