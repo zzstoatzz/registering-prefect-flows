@@ -33,4 +33,4 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Register flow
-      run: prefect register -p flows/flow.py --project "tastyworks"
+      run: prefect register -p flows/flow.py --project "test"
