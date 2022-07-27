@@ -7,7 +7,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      TOKEN: fromJSON('[${{ secrets.PREFECT_DEV_AUTH }}, ${{ secrets.PREFECT_AUTH }}]')[github.ref == 'refs/heads/main']
 
     steps:
     - uses: actions/checkout@v2
@@ -20,6 +19,10 @@ jobs:
 
     - name: Authenticate with Prefect Cloud
       run: prefect auth login -k $TOKEN
+      if: github.ref == 'refs/heads/main' && success()
+      env:
+        TOKEN: "${{ github.ref == 'refs/heads/main' && secrets.PREFECT_AUTH || secrets.PREFECT_DEV_AUTH }}"
+
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
