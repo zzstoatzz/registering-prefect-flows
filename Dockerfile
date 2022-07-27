@@ -2,7 +2,7 @@ FROM prefecthq/prefect:1.2.4-python3.8
 
 COPY flows/*.py /modules/
 
-COPY pyproject.toml .
+COPY requirements.txt .
 
 ENV PYTHONPATH=$PYTHONPATH:modules/
 
