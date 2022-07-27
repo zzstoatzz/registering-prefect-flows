@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      TOKEN: fromJSON('[${{ secrets.PREFECT_DEV_AUTH }}, ${{ secrets.PREFECT_AUTH }}"]')[github.ref == 'refs/heads/main']
+      TOKEN: fromJSON('[${{ secrets.PREFECT_DEV_AUTH }}, ${{ secrets.PREFECT_AUTH }}]')[github.ref == 'refs/heads/main']
 
     steps:
     - uses: actions/checkout@v2
