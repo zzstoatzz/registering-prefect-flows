@@ -16,9 +16,8 @@ jobs:
     - name: Pip install requirements.txt
       run: pip install -r requirements.txt
 
-    - name: Authenticate with Prefect Cloud
+    - name: Authenticate with Prefect Cloud prod tenant
       run: prefect auth login -k $TOKEN
-      if: github.ref == 'refs/heads/main' && success()
       env:
         TOKEN: "${{ github.ref == 'refs/heads/main' && secrets.PREFECT_AUTH || secrets.PREFECT_DEV_AUTH }}"
 
