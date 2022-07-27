@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - dev
+      - develop
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,7 +16,7 @@ jobs:
     - name: Pip install requirements.txt
       run: pip install -r requirements.txt
 
-    - name: Authenticate with Prefect Cloud prod tenant
+    - name: Authenticate with Prefect Cloud
       run: prefect auth login -k $TOKEN
       env:
         TOKEN: "${{ github.ref == 'refs/heads/main' && secrets.PREFECT_AUTH || secrets.PREFECT_DEV_AUTH }}"
@@ -26,12 +26,16 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-        aws-region: 'us-east-1'
+        aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+
+    - uses: int128/create-ecr-repository-action@v1
+      id: ecr
+      with:
+        repository: prefect/customer-rfm-segmentation
 
     - name: Register flow
       run: prefect register -p flows/flow.py --project "test"
