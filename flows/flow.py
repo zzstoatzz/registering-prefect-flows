@@ -11,3 +11,6 @@ storage = Docker(
 with Flow('sandbox', storage=storage) as flow:
     result = task_a()
     task_b(upstream_tasks=[result])
+    
+if __name__ == "__main__":
+    flow.run(run_on_schedule=False)
