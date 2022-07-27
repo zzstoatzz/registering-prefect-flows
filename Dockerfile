@@ -6,6 +6,7 @@ COPY pyproject.toml .
 
 ENV PYTHONPATH=$PYTHONPATH:modules/
 
+
 RUN apt update
 
 RUN apt install --no-install-recommends -y curl && \
