@@ -11,19 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run image
-      uses: abatilo/actions-poetry@v2.0.0
-      with:
-        poetry-version: 1.1.12
-
     - name: Pip update
-      run: pip install -U wheel pip prefect
+      run: pip install -U wheel pip
 
-    # - name: Poetry Settings
-    #   run: poetry config virtualenvs.create false
-
-    # - name: Poetry Install
-    #   run: poetry install --no-interaction --no-ansi --no-dev
+    - name: Pip install requirements.txt
+      run: pip install -r requirements.txt
 
     - name: Authenticate with Prefect Cloud
       run: prefect auth login -k $TOKEN
