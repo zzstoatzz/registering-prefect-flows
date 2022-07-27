@@ -1,0 +1,4 @@
+- id: update-requirements-from-pyproject
+  name: Update requirements.txt from Poetry pyproject.toml file
+  entry: bin/update-requirements.sh
+  language: script
